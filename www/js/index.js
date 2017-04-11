@@ -162,10 +162,106 @@ app.device = {
     var self = this;
     if(self.userInfos){
       self.plugin.getSleepData(self.userInfos.model,self.userInfos.address,function(result){
-        console.log('DEVICE ACTIVITY DATA RESULT',JSON.stringify(result));
+        console.log('DEVICE SLEEP DATA RESULT',JSON.stringify(result));
         self.tracelog(JSON.stringify(result));
       },function(error){
-        console.log('DEVICE ACTIVITY DATA ERROR',JSON.stringify(error));
+        console.log('DEVICE SLEEP DATA ERROR',JSON.stringify(error));
+        self.tracelog(JSON.stringify(error));
+      })
+    }else{
+      console.error('NO DEVICE SCANNED');
+    }
+  },
+  setUserId: function(user_id){
+    var self = this;
+    if(self.userInfos){
+      self.plugin.setUserId(self.userInfos.model,self.userInfos.address,user_id, function(result){
+        console.log('DEVICE SETUSERID RESULT',JSON.stringify(result));
+        self.tracelog(JSON.stringify(result));
+      },function(error){
+        console.log('DEVICE SETUSERID ERROR',JSON.stringify(error));
+        self.tracelog(JSON.stringify(error));
+      })
+    }else{
+      console.error('NO DEVICE SCANNED');
+    }
+  },
+  getUserId: function(){
+    var self = this;
+    if(self.userInfos){
+      self.plugin.getUserId(self.userInfos.model,self.userInfos.address,function(result){
+        console.log('DEVICE GETUSERID RESULT',JSON.stringify(result));
+        self.tracelog(JSON.stringify(result));
+      },function(error){
+        console.log('DEVICE GETUSERID ERROR',JSON.stringify(error));
+        self.tracelog(JSON.stringify(error));
+      })
+    }else{
+      console.error('NO DEVICE SCANNED');
+    }
+  },
+  setUserInfo: function(user_info){
+	  // @todo check values
+	var user_info = user_info || {
+		age: 23, 
+		height: 150, 
+		weight: 50, 
+		gender: 'M', 
+		unit: 'cm', 
+		target: '', 
+		activityLevel: '',
+		min: ''		
+	};
+    var self = this;
+    if(self.userInfos){
+      self.plugin.setUserInfo(self.userInfos.model,self.userInfos.address,user_info.age, user_info.height, user_info.weight, user_info.gender, user_info.unit, user_info.target, user_info.activityLevel, user_info.min, function(result){
+        console.log('DEVICE SETUSERINFO RESULT',JSON.stringify(result));
+        self.tracelog(JSON.stringify(result));
+      },function(error){
+        console.log('DEVICE SETUSERINFO ERROR',JSON.stringify(error));
+        self.tracelog(JSON.stringify(error));
+      })
+    }else{
+      console.error('NO DEVICE SCANNED');
+    }
+  },
+  sendRandomNumber: function(){
+    var self = this;
+    if(self.userInfos){
+      self.plugin.sendRandomNumber(self.userInfos.model,self.userInfos.address,function(result){
+        console.log('DEVICE sendRandomNumber RESULT',JSON.stringify(result));
+        self.tracelog(JSON.stringify(result));
+      },function(error){
+        console.log('DEVICE sendRandomNumber ERROR',JSON.stringify(error));
+        self.tracelog(JSON.stringify(error));
+      })
+    }else{
+      console.error('NO DEVICE SCANNED');
+    }
+  },
+  syncTime: function(){
+    var self = this;
+    if(self.userInfos){
+      self.plugin.syncTime(self.userInfos.model,self.userInfos.address,function(result){
+        console.log('DEVICE syncTime RESULT',JSON.stringify(result));
+        self.tracelog(JSON.stringify(result));
+      },function(error){
+        console.log('DEVICE syncTime ERROR',JSON.stringify(error));
+        self.tracelog(JSON.stringify(error));
+      })
+    }else{
+      console.error('NO DEVICE SCANNED');
+    }
+  },
+  setTimeMode: function(mode){
+	var mode = mode || ''; // int
+    var self = this;
+    if(self.userInfos){
+      self.plugin.setTimeMode(self.userInfos.model,self.userInfos.address,mode,function(result){
+        console.log('DEVICE setTimeMode RESULT',JSON.stringify(result));
+        self.tracelog(JSON.stringify(result));
+      },function(error){
+        console.log('DEVICE setTimeMode ERROR',JSON.stringify(error));
         self.tracelog(JSON.stringify(error));
       })
     }else{
