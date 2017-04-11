@@ -203,13 +203,13 @@ app.device = {
   setUserInfo: function(user_info){
 	  // @todo check values
 	var user_info = user_info || {
-		age: 23, 
-		height: 150, 
-		weight: 50, 
-		gender: 'M', 
+		age: 23, // int
+		height: 150, // int
+		weight: 50,  // int
+		gender: 1, // int
 		unit: 'cm', 
-		target: '', 
-		activityLevel: '',
+		target: '', // int
+		activityLevel: '', // int
 		min: ''		
 	};
     var self = this;
@@ -219,6 +219,21 @@ app.device = {
         self.tracelog(JSON.stringify(result));
       },function(error){
         console.log('DEVICE SETUSERINFO ERROR',JSON.stringify(error));
+        self.tracelog(JSON.stringify(error));
+      })
+    }else{
+      console.error('NO DEVICE SCANNED');
+    }
+  },
+  // @todo below
+  getUserInfo: function(){
+    var self = this;
+    if(self.userInfos){
+      self.plugin.getUserInfo(self.userInfos.model,self.userInfos.address,function(result){
+        console.log('DEVICE GETUSERINFO RESULT',JSON.stringify(result));
+        self.tracelog(JSON.stringify(result));
+      },function(error){
+        console.log('DEVICE GETUSERINFO ERROR',JSON.stringify(error));
         self.tracelog(JSON.stringify(error));
       })
     }else{
