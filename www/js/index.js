@@ -130,7 +130,8 @@ app.device = {
   disconnect: function(){
     var self = this;
     if(self.userInfos){
-      self.plugin.disconnect(self.userInfos.model,self.userInfos.address,function(result){
+	  // self.plugin.disconnect(self.userInfos.model,self.userInfos.address,function(result){
+      self.plugin.disconnect('TYPE_'+self.userInfos.model,self.userInfos.address,function(result){
         console.log('DEVICE DISCONNECT RESULT',JSON.stringify(result));
         self.tracelog(JSON.stringify(result));
         self.userInfos=null;
